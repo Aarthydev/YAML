@@ -1,1 +1,17 @@
+version: v0.1
+testId: sampletest-cicd
+displayName: Sample test from CI/CD
+description: Minimal JMeter-based load test
+testType: JMX
+testPlan: SampleTest.jmx
+engineInstances: 1
+
+# Optional (good practice)
+failureCriteria:
+  - avg(response_time_ms) > 3000     # fail if average response > 3s
+  - percentage(error) > 5            # fail if > 5% requests error
+
+autoStop:
+  errorPercentage: 50                 # stop if error rate exceeds 50%
+  timeWindow: 60                      # over a 60-second window
 
